@@ -1,0 +1,7 @@
+1,Install jython
+2,install Django,django-jython, built new project.edit database to doj at setting.py
+3,startapp chores.
+4,add chorelists and chore at models.py
+5,add chores to project at setting.py
+5,integrate git with pycharm
+6,
