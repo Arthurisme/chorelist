@@ -6,4 +6,6 @@
 5,integrate git with pycharm
 6,jython manage.py makemigrations chores
 7,jython manage.py sqlmigrate chores 0001
+8, jython manage.py migrate
+
 
