@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 # Create your views here.
 
-from django.http import HttpResponse
-from .models import  ChoreList
+from django.http import HttpResponse,Http404
+from .models import  ChoreList, Chore
 from django.template import RequestContext,loader
 
 def index(request):
@@ -23,19 +23,24 @@ def index(request):
 
 def detail(request, chorelist_id):
     # return HttpResponse("You are looking at ChoreList #%s ." % chorelist_id)
-    lists = ChoreList.objects.get(pk=chorelist_id)
     # template=loader.get_template('chores/index.html')
     # context=RequestContext(request,{
     #     'chorelists':lists
     # })
     # output = ', '.join([cl.name for cl in lists])
     # return HttpResponse(template.render(context))
-    context= {  'chorelist':lists }
-    return render(request,'chores/detail.html',{'chorelist': lists})
+    # context= {  'chorelist':lists }
 
-def chores(request, chorelist_id):
-    return HttpResponse("You are looking at Chores from ChoreList #%s ." % chorelist_id)
+    list = get_object_or_404(ChoreList, pk=chorelist_id)
+    return render(request,'chores/detail.html',{'chorelist': list})
+
+# def chores(request, chorelist_id):
+#     list = get_object_or_404(ChoreList, pk=chorelist_id)
+#     chores=list.chore_set.all()
+#     return render(request,'chores/chores.html',{'chorelist': list, 'chores':chores})
 
 def choredetail(request, chorelist_id, chore_id):
-    return HttpResponse("You are looking at Chores #%s from ChoreList #%s ." % (chore_id,chorelist_id))
+    list = get_object_or_404(ChoreList, pk=chorelist_id)
+    chore = get_object_or_404(Chore, pk=chore_id)
+    return render(request,'chores/choredetail.html',{'chorelist': list, 'chore':chore})
 
