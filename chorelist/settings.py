@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chores',
-    'doj',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,10 +79,39 @@ WSGI_APPLICATION = 'chorelist.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'doj.db.backends.sqlite',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'doj.db.backends.sqlite',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# DATABASES = {
+# 'default': {
+#     'ENGINE': 'doj.db.backends.mysql',
+#     'NAME': 'testpython',
+#     'HOST': '127.0.0.1',
+#     'PORT': '3306',
+#     'USER': 'root',
+#     'PASSWORD': 'aRthur',
+# }}
+
+#postgresql:
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'doj.db.backends.postgresql',
+#         'NAME': 'testforpython',
+#         'USER': 'postgres',
+#         'PASSWORD': 'greybox',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Internationalization
@@ -90,7 +119,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'GMT'
 
 USE_I18N = True
 
