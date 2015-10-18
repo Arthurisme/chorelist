@@ -1,5 +1,5 @@
 1:  Install jython
-2:  install Django,django-jython, built new project.edit database to doj at setting.py
+2:  install Django,django-jython, built new project. edit database to doj at setting.py
 3:  startapp chores.
 4:  add chorelists and chore at models.py
 5:  add chores to project at setting.py
@@ -37,12 +37,18 @@
 16: In home imac, the postgresql is on python3, not python2.
     jython on home imac is error: unicode or tzinfo, or database.
     And fail in jython database driver for: postgresql, mysql.
-17: now, only python and python3 work well for this project.(I will try jython-django on unbuntu after master the grail and spring,jhiperster)
+17: now, only python and python3 work well for this project.(I will try jython-django on unbuntu after master the grail
+    and spring,jhiperster)
 18; add some fileds in admin.py.
     Regroup the admin field: (None,{'fields':['name']}),
 19: class collapse  'classes':['collapse']
 20: Add another model in admin
 21: Put the new add model in its parent in admin   --- StackedInline , inlines
-22: StackedInline to tabulaInline (So beautiful a little move)
+22: StackedInline to tabulaInline (So beautiful a little move).
+23: Build a only-a-line-text page and build a url.py in chores:
+    url(r'^$',  views.index, name='index')
+    link this page. And then link url.py in Chorelist to
+    url.py in chores:
+    url(r'^chores/', include('chores.urls')),
 
 
