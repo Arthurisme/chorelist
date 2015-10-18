@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render
 
 # Create your views here.
 
-from django.http import HttpResponse,Http404
+from django.http import HttpResponse,Http404, HttpResponseRedirect
 from .models import  ChoreList, Chore
 from django.template import RequestContext,loader
 
@@ -43,4 +43,17 @@ def choredetail(request, chorelist_id, chore_id):
     list = get_object_or_404(ChoreList, pk=chorelist_id)
     chore = get_object_or_404(Chore, pk=chore_id)
     return render(request,'chores/choredetail.html',{'chorelist': list, 'chore':chore})
+
+def updatechore(request, chorelist_id, chore_id):
+    list = get_object_or_404(ChoreList, pk=chorelist_id)
+
+    chore = get_object_or_404(Chore, pk=chore_id)
+
+    if 'complete' in request.POST:
+        chore.complete=True
+    else:
+        chore.complete=False
+    chore.save()
+    # return render(request,'chores/choredetail.html',{'chorelist': list, 'chore':chore})
+    return HttpResponseRedirect('/chores/'+chorelist_id+'/chores/'+chore_id)
 
